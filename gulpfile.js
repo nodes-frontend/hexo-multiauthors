@@ -22,16 +22,9 @@ gulp.task('mocha', ['coverage'], function(){
         .pipe($.istanbul.writeReports());
 });
 
-gulp.task('jshint', function(){
-    return gulp.src(lib)
-        .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish'))
-        .pipe($.jshint.reporter('fail'));
-});
-
 gulp.task('watch', function(){
     gulp.watch(lib, ['mocha', 'jshint']);
     gulp.watch(['test/index.js'], ['mocha']);
 });
 
-gulp.task('test', ['mocha', 'jshint']);
+gulp.task('test', ['mocha']);

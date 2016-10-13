@@ -1,6 +1,5 @@
-describe('Multiauthor plugin', function () {
-    require('./processorSpec');
-    require('./filterSpec');
-    require('./generatorSpec');
+describe('Multiauthor plugin', function() {
+	require('./processorSpec');
+	require('./filterSpec');
+	require('./generatorSpec');
 });
-

@@ -1,4 +1,4 @@
-# Multi author support for Hexo #
+# Multi authors support for Hexo #
 
 [![Build Status](https://travis-ci.org/bob983/hexo-multiauthor.svg?branch=master)](https://travis-ci.org/bob983/hexo-multiauthor) 
 [![Coverage Status](https://coveralls.io/repos/bob983/hexo-multiauthor/badge.svg)](https://coveralls.io/r/bob983/hexo-multiauthor)
@@ -9,42 +9,18 @@
 
 Tested wit Hexo 3.x
  
-This plugin adds support for multiple authors. You can add author to a post by adding `authorId` to frontmatter. You can see it in action at http://blog.cngroup.dk. It uses modified `twbootstrap` template.
+This plugin adds support for multiple authors for articles. You can add authors to a post by adding an `authorIds` array to the frontmatter.
  
-
     title: Sample post
     date: 2014/01/10 12:00
     tags: [hexo]
-    authorId: LSK
+    authorIds: 
+    - ABC
+    - DEF
  
-At this point, this plugin expects a file `source/_authors/LSK.yml` exists. Following content is supported:
+At this point, this plugin expects two files `source/_authors/ABC.yml` and `source/_authors/DEF.yml` to exist. In the author files you can add Author Metadata ie.:
   
-
 	name: Luke Skywalker
 	about: Pilot
-
-When the public content is generated, plugin will group posts by authors and generate pages for each author. In order to reach the author page, you need to tweak the templates.
-
-`layout/partial/post/title.ejs`:
-
-	<% if (item.link){ %>
-	  <% if (item.title){ %>
-	    <h1 class="title"><a href="<%- item.link %>" target="_blank"><%= item.title %></a></h1>
-	  <% } else { %>
-	    <h1 class="title"><a href="<%- item.link %>" target="_blank"><%= item.link %></a></h1>
-	  <% } %>
-	<% } else { %>
-	  <% if (index){ %>
-	    <h1 class="title"><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></h1>
-	  <% } else { %>
-	    <h1 class="title"><%= item.title %></h1>
-	  <% } %>
-	   <% if (author && item.author) { %>
-	    <a href="<%- config.root %><%- 'author/' + item.authorId %>"><h4><%= item.author.name %></h4></a>
-	   <% } %>
-	<% } %> 
-
- 
-
-
-
+	
+This plugin will create Author pages (/authors/`authorId`) when you run `hexo generate` - each page contains a paginated list of posts written by the Author. The generator expects a layout called authors, but will fall back to the index layout if it cannot be found.
