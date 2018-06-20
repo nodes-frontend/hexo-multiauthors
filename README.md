@@ -1,4 +1,5 @@
-# ⛔️ [DEPRECATED]  Multi authors support for Hexo #
+# Multi authors support for Hexo #
+_Not maintained by Nodes anymore_
 
 [![Build Status](https://travis-ci.org/nodes-frontend/hexo-multiauthors.svg?branch=master)](https://travis-ci.org/nodes-frontend/hexo-multiauthors) 
 [![Coverage Status](https://coveralls.io/repos/github/nodes-frontend/hexo-multiauthors/badge.svg?branch=master)](https://coveralls.io/github/nodes-frontend/hexo-multiauthors?branch=master)
